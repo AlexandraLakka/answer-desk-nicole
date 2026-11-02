@@ -92,9 +92,11 @@ const xymoulisFee = 2.50;
 
 <style>
   .checkout-container {
+    width: 100%;
     max-width: 500px;
-    margin: 2rem auto;
-    padding: 2rem;
+    margin: 1.5rem auto;
+    padding: 1.5rem;
+    box-sizing: border-box; /* Prevents padding from blowing out screen width */
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     font-family: inherit;
@@ -111,6 +113,8 @@ const xymoulisFee = 2.50;
     display: flex;
     justify-content: space-between;
     margin-bottom: 0.5rem;
+    gap: 1rem; /* Prevents text from overlapping on tiny screens */
+    word-break: break-word;
   }
 
   .total {
@@ -127,12 +131,14 @@ const xymoulisFee = 2.50;
   .field-row {
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap; /* Automatically stacks Expiry and CVV on narrow mobile screens */
   }
 
   .field {
     display: flex;
     flex-direction: column;
     flex: 1;
+    min-width: 120px; /* Ensures inputs don't shrink into nothingness */
   }
 
   label {
@@ -141,25 +147,40 @@ const xymoulisFee = 2.50;
   }
 
   input {
-    padding: 0.6rem;
+    width: 100%;
+    padding: 0.75rem; /* Slightly taller for easier mobile tapping */
     border-radius: 6px;
     border: 1px solid #444;
     background: #111;
     color: #fff;
+    box-sizing: border-box;
+    font-size: 1rem; /* Prevents iOS auto-zoom on input focus */
   }
 
   .pay-button {
     margin-top: 1rem;
-    padding: 0.8rem;
+    padding: 0.9rem;
     background-color: #6366f1;
     color: white;
     border: none;
     border-radius: 6px;
     font-weight: bold;
     cursor: pointer;
+    font-size: 1rem;
   }
 
   .pay-button:hover {
     background-color: #4f46e5;
+  }
+
+  /* Extra safety check for very small mobile devices */
+  @media (max-width: 480px) {
+    .checkout-container {
+      margin: 0.5rem auto;
+      padding: 1rem;
+      border-left: none;
+      border-right: none;
+      border-radius: 0;
+    }
   }
 </style>
