@@ -183,4 +183,17 @@ const xymoulisFee = 2.50;
       border-radius: 0;
     }
   }
+
+  .image-wrapper {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;     /* Centers vertically (if the div has a set height) */
+    width: 100%;             /* Takes up full width of the parent container */
+    margin: 1.5rem 0;        /* Optional: adds breathing room above and below */
+  }
+
+  .image-wrapper img {
+    max-width: 100%;         /* Ensures the image scales down on mobile */
+    height: auto;            /* Keeps the image proportions correct */
+  }
 </style>
